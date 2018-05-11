@@ -3,8 +3,8 @@ import java.util.*;
 import java.io.*;
 
 /**
- * Client est la classe représentant un client du serveur.
- * @author Ayoub SANHAJI et Andriamanantoanina RAKOTONDRANALY
+ * Client est la classe reprÃ©sentant un client du serveur.
+ * @author Ayoub SANHAJI
  * @version 1.0
  */
 public class Client 
@@ -96,7 +96,7 @@ public class Client
 			message_distant = in.readLine();
 			System.out.println(message_distant);
 
-			// Test sur le 2eme message affiché
+			// Test sur le 2eme message affichÃ©
 			if(message_distant.compareTo(" ") == 0)
 			{
 				// Saisie du CodeLicencie
@@ -116,8 +116,8 @@ public class Client
 			// Fermeture de la connexion dans le cas ou le code entre est faux
 			if(message_distant == null)
 			{
-				System.out.println("Vous êtes déconnecté du serveur !");
-				System.out.println("Code erroné !");
+				System.out.println("Vous Ãªtes dÃ©connectÃ© du serveur !");
+				System.out.println("Code erronÃ© !");
 				socket.close();
 			}
 		 
@@ -144,7 +144,7 @@ public class Client
 					// Recevoire les infos
 					message_distant = in.readLine();
 					String[] infos = message_distant.split(" ");
-					if(message_distant.compareTo("Gagné !")==0)
+					if(message_distant.compareTo("GagnÃ© !")==0)
 						break;
 					if(text.compareTo("GIVE UP")==0)
 					{
@@ -174,18 +174,18 @@ public class Client
 							{
 								message_distant = in.readLine();
 								System.out.println(message_distant);
-								if(message_distant.compareTo("Gagné !")==0)
+								if(message_distant.compareTo("GagnÃ© !")==0)
 									break;
 								message_distant = in.readLine();
 								System.out.println(message_distant);
 							}
 						}
-						if(message_distant.compareTo("Gagné !")==0)
+						if(message_distant.compareTo("GagnÃ© !")==0)
 							break;
 					}
-					// Calcule et affichage de la durée
+					// Calcule et affichage de la durÃ©e
 					duree += (fin-deb)/1000;
-					System.out.println("Temps ecoulé: "+duree+ "s");
+					System.out.println("Temps ecoulÃ©: "+duree+ "s");
 				}
 	
 				// Calcule et affichage du score
@@ -221,7 +221,7 @@ public class Client
 
         catch (SocketException e) 
         {
-			System.out.println("Vous êtes déconnecté du serveur !");
+			System.out.println("Vous Ãªtes dÃ©connectÃ© du serveur !");
         }
         catch (UnknownHostException e) 
         {
