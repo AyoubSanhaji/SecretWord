@@ -3,8 +3,8 @@ import java.util.*;
 import java.io.*;
 
 /**
- * ServeurMultiClient est la classe représentant un serveur
- * @author Ayoub SANHAJI et Andriamanantoanina RAKOTONDRANALY
+ * ServeurMultiClient est la classe reprÃ©sentant un serveur
+ * @author Ayoub SANHAJI
  * @version 1.0
  */
 public class ServeurMultiClient
@@ -20,8 +20,8 @@ public class ServeurMultiClient
         	// Affichage d'un menu
         	System.out.println("****************************************");
         	System.out.println("**  Choisir parmi les choix suivants: **");
-        	System.out.println("**     0: remise à zéro les inscrits  **");
-        	System.out.println("**      1: remise à zéro les scors    **");
+        	System.out.println("**     0: remise Ã  zÃ©ro les inscrits  **");
+        	System.out.println("**      1: remise Ã  zÃ©ro les scors    **");
         	System.out.println("**         ?: demarrer le serveur     **");
         	System.out.println("****************************************");
         	System.out.print("Votre choix:  ");
@@ -477,7 +477,7 @@ class Service implements Runnable
                	s = socketserveur.accept();
 	       		sonIp=s.getInetAddress().toString();
 	       		nbrclient ++;	
-               	System.out.println("le client "+nbrclient+" s'est connecté :"+ sonIp);
+               	System.out.println("le client "+nbrclient+" s'est connectÃ© :"+ sonIp);
 	    
 	   			out = new PrintWriter(s.getOutputStream());
 			   	in = new BufferedReader (new InputStreamReader (s.getInputStream()));
@@ -535,21 +535,21 @@ class Service implements Runnable
 							{
 								score = Integer.parseInt(lineJ[3]);
 								nbrepartie = Integer.parseInt(lineJ[4]);
-								out.println("Vous nous avez manqué "+text);
-								out.println("Nombre de jeux effectués: "+nbrepartie+" - Score actuel: "+score+" - Classement: "+retournerPlaceJoueur(code));
+								out.println("Vous nous avez manquÃ© "+text);
+								out.println("Nombre de jeux effectuÃ©s: "+nbrepartie+" - Score actuel: "+score+" - Classement: "+retournerPlaceJoueur(code));
 							}
 							else
 							{
 								Thread.sleep(1000);
 								s.close();
-           						System.out.println("Déconnexion du client numero "+nbrclient+" d'ip "+sonIp);
+           						System.out.println("DÃ©connexion du client numero "+nbrclient+" d'ip "+sonIp);
            						nbrclient--;
 							}
 						}
 						else
 						{
 							out.println("Merci "+text);
-							out.println("Votre code licencie est "+ code + " (Gardez le précieusement)");
+							out.println("Votre code licencie est "+ code + " (Gardez le prÃ©cieusement)");
 						}	
 						nbrepartie += 1;
 					}
@@ -567,7 +567,7 @@ class Service implements Runnable
 					{
 						in = new BufferedReader (new InputStreamReader (s.getInputStream()));
 						out = new PrintWriter(s.getOutputStream());
-					   	out.println("Taper un mot de "+combinaison.length()+" caractères: ");
+					   	out.println("Taper un mot de "+combinaison.length()+" caractÃ¨res: ");
 					   	out.flush();	
 					   	Thread.sleep(1000);
 					   	mot = in.readLine();
@@ -583,7 +583,7 @@ class Service implements Runnable
 	
 				   		if(mot.compareTo("GIVE UP")==0)
 				   		{
-				   			out.println("Vous avez abandonné le jeu !");
+				   			out.println("Vous avez abandonnÃ© le jeu !");
 				   			combinaison = genererCombinaison(nbreCaract);
 				   			score += -5;
 				   		}
@@ -591,21 +591,21 @@ class Service implements Runnable
 				   		{
 							if(n1==-1 || n2==-1)
 							{
-								out.println("Le nombre de caractères n'est pas "+combinaison.length()+" caractères !");
+								out.println("Le nombre de caractÃ¨res n'est pas "+combinaison.length()+" caractÃ¨res !");
 							}
 							else
 							{
 								if(n3 == 0)
-									out.println("Le mot ne doit se composer que de caractères !");	
+									out.println("Le mot ne doit se composer que de caractÃ¨res !");	
 								else
 								{
 									if(n2 != combinaison.length())
 									{
-										out.println("Le nombre de caractères placés dans l'ordre est:  "+n2);
-										out.println("Le nombre de caractères présents est:  "+n1);
+										out.println("Le nombre de caractÃ¨res placÃ©s dans l'ordre est:  "+n2);
+										out.println("Le nombre de caractÃ¨res prÃ©sents est:  "+n1);
 									}
 									else
-										out.println("Gagné !");
+										out.println("GagnÃ© !");
 								}
 							}
 				   		}
@@ -636,14 +636,14 @@ class Service implements Runnable
 					
 					// Envoie des statistiques
 					out = new PrintWriter(s.getOutputStream());
-					out.println("A bientôt "+text);
-					out.println("Nombre de jeux effectués: "+nbrepartie+" - Score de partie: "+scorepartie+" - Score actuel: "+score+" - Classement: "+retournerPlaceJoueur(code));
+					out.println("A bientÃ´t "+text);
+					out.println("Nombre de jeux effectuÃ©s: "+nbrepartie+" - Score de partie: "+scorepartie+" - Score actuel: "+score+" - Classement: "+retournerPlaceJoueur(code));
 					out.flush();
 					
 	        	   	// Cloture de la connexion avec le service entrant
 		   			Thread.sleep(1000);
 		   			s.close();
-	           		System.out.println("Déconnexion du client numero "+nbrclient+" d'ip "+sonIp); 
+	           		System.out.println("DÃ©connexion du client numero "+nbrclient+" d'ip "+sonIp); 
 	           		nbrclient--;
 		    	}
 	 	    } 
@@ -651,12 +651,12 @@ class Service implements Runnable
 			// Ecoute d'un service entrant -association socket client et socket serveur.		
             s = socketserveur.accept(); 
 	       	nbrclient++;	
-            System.out.println("le client "+nbrclient+" s'est connecté !"); 
+            System.out.println("le client "+nbrclient+" s'est connectÃ© !"); 
 			
 			// Envoi d'un message de trop de connexions
 		   	out = new PrintWriter(s.getOutputStream());
 		   	Thread.sleep(1000);
-		   	out.println("Trop de clients, débordé, désolé!");
+		   	out.println("Trop de clients, dÃ©bordÃ©, dÃ©solÃ©!");
 		   	out.flush();
 
            	// Cloture de la connexion avec le service entrant
@@ -675,7 +675,7 @@ class Service implements Runnable
         			score = 0;
         		ecrireFile("Users.txt", genererCodeLicencie(nom,prenom)+" "+nom+" "+prenom+" "+score+" "+nbrepartie+"\r", true);
         	}
-           	System.out.println("Déconnexion du client numero "+nbrclient+" d'ip "+sonIp);
+           	System.out.println("DÃ©connexion du client numero "+nbrclient+" d'ip "+sonIp);
            	try 
            	{
 				s.close();
